@@ -9,7 +9,7 @@ pipeline {
                 git 'https://github.com/Abhisharma078/student-application-.git'
             }
              post {
-                sucess {
+                success {
                     echo "checkout has been completed"
                     
                 }

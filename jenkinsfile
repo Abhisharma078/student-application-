@@ -7,6 +7,10 @@ pipeline {
         maven 'mvn'
     }
 
+    environment {
+        my_aws_cred = credentials('aws-cred')
+    }
+
     stages{
 
         stage('Checkout'){

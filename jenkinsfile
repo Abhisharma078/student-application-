@@ -36,7 +36,7 @@ pipeline {
             stage ('Artifacts to s3'){
                 steps {
                     sh '''
-                       sudo snap install aws-cli --classic
+                       sudo apt install awscli -y
                       aws s3 cp target/*.war s3://abhiclpid.online/Artifacts/student
                       '''
                 }

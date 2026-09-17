@@ -5,6 +5,9 @@ pipeline {
     tools{
         maven 'mvn'
     }
+    environment {
+        my_aws = credentails('aws-cred')
+    }
 
     stages {
         stage ('checkout'){
@@ -25,9 +28,19 @@ pipeline {
             }
              post{
                  success{
-                    archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+                    archiveArtifacts artzxfacts: '**/target/*.war', fingerprint: true
                 }
-              }      
-            }  
-        }
-   }
+              }
+        }    
+
+            stage ('Artifacts to s3'){
+                steps {
+                    sh '''
+                      snap install aws-cli --classic
+                      aws s3 cp target/*.war s3://abhiclpid.online/Artifacts/student
+                      '''
+                }
+            }      
+     }  
+ }
+   

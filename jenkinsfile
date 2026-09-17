@@ -11,5 +11,13 @@ pipeline {
                 echo "Clonning is Successful"
             }
         }
+
+        stage('Build') {
+            steps {
+                sh '''
+                  mvn clean package
+                '''
+            }
+        }
     }
 }

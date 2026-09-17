@@ -3,36 +3,12 @@ pipeline {
         label "worker"
     }
 
-    tools {
-        maven 'mvn'
-    }
+    stages{
 
-    stages {
-
-        stage('checkout') {
-            steps {
+        stage('Checkout'){
+            steps{
                 git 'https://github.com/mayurpandit25/student-management.git'
-                echo "Clonning is successful"
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh '''
-                  mvn clean package
-                '''
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo "Testing is successful"
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo "Deployment is successful"
+                echo "Clonning is Successful"
             }
         }
     }

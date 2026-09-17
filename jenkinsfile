@@ -10,7 +10,7 @@ pipeline {
             }
              post {
                 sucess {
-                    "checkout is succesful"
+                    echo "checkout has been completed"
                     
                 }
              }

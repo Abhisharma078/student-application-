@@ -2,17 +2,32 @@ pipeline {
     agent{
         label 'worker'
     }
+    tools{
+        maven 'mvn'
+    }
 
     stages {
         stage ('checkout'){
             steps {
-                git 'https://github.com/Abhisharma078/student-applicat
+                git 'https://github.com/Abhisharma078/student-application-.git'
              post {
                 success {
                     echo "checkout has been completed"                 
                 }
              }
+          } 
         }
-        
+        stage ('build'){
+            steps{
+                sh '''
+                mvn clean package
+                ''' 
+             post{
+                success{
+                    archiveArtifacts artifacts: '**/target/*.war', fingerprint=true
+                }
+             }      
+            }  
+        }
     }
 }

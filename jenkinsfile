@@ -6,14 +6,13 @@ pipeline {
     stages {
         stage ('checkout'){
             steps {
-                git 'https://github.com/Abhisharma078/student-application-.git'
-            }
+                git 'https://github.com/Abhisharma078/student-applicat
              post {
                 success {
-                    echo "checkout has been completed"
-                    
+                    echo "checkout has been completed"                 
                 }
              }
         }
+        
     }
 }

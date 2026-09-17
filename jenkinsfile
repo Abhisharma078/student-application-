@@ -7,8 +7,13 @@ pipeline {
         stage ('checkout'){
             steps {
                 git 'https://github.com/Abhisharma078/student-application-.git'
-                echo "checkout is succesfully done "
             }
+             post {
+                sucess {
+                    "checkout is succesful"
+                    
+                }
+             }
         }
     }
 }

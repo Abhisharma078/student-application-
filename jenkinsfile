@@ -39,5 +39,14 @@ pipeline {
 				sh ' aws s3 cp target/*.war s3://abhicloud.online/artifacts/student.war'
 			}
 		}
+        		stage('sonarQube Analysis') {
+			steps{
+				withSonarQubeEnv('sonar'){
+					sh 'maven sonar:sonar'
+				}
+			}
+		}			
 	}	
 }	
+
+	
